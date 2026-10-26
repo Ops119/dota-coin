@@ -54,18 +54,15 @@ img{max-width:100%}
 .ticker .track{display:inline-flex;gap:48px;padding:12px 0;animation:slide 32s linear infinite;color:var(--ice);font:600 14px Sora,sans-serif;letter-spacing:.14em;text-transform:uppercase}
 .ticker span::after{content:"◆";margin-left:48px;color:var(--amber)}
 @keyframes slide{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}html{scroll-behavior:auto}.coin{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}html{scroll-behavior:auto}}
 /* hero */
-.hero{display:flex;flex-wrap:wrap;align-items:center;gap:40px 56px;padding:72px 0 64px}
-.hero .copy{flex:1 1 520px;min-width:0}
+.hero{padding:88px 0 72px}
+.hero .copy{min-width:0}
 .kicker{font:600 14px Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-hi)}
 h1{margin:18px 0 0;font:800 clamp(42px,7.4vw,88px)/1.02 Sora,sans-serif;letter-spacing:-.03em}
 h1 em{font-style:normal;color:var(--blue-hi);text-shadow:0 0 40px rgba(79,127,255,.6)}
-.lead{margin:24px 0 0;max-width:560px;font-size:20px;color:#B7C2DA}
+.lead{margin:24px 0 0;max-width:620px;font-size:20px;color:#B7C2DA}
 .cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px}
-.coinbox{flex:0 1 400px;display:flex;justify-content:center}
-.coin{width:100%;max-width:400px;height:auto;border-radius:50%;display:block;filter:drop-shadow(0 0 48px rgba(79,127,255,.55));animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px)}}
 /* stats */
 .stats{display:flex;flex-wrap:wrap;gap:16px}
 .stat{flex:1 1 220px;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}
@@ -162,9 +159,6 @@ footer p{margin:0;max-width:820px}
           </a>
           <a class="btn ghost" href="#lore">Read the lore</a>
         </div>
-      </div>
-      <div class="coinbox">
-        <img class="coin" src="/img/dta-coin.webp" alt="The DTA coin: a silver DTA monogram inside a glowing blue circuit-board ring" width="400" height="400">
       </div>
     </div>
 
