@@ -3,162 +3,275 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dota $DTA</title>
-<meta name="description" content="Dota ($DTA): fixed supply, no owner, built on Base. Community claim, finite holder rewards, LP vault and buyback burns. Launching soon.">
-<meta property="og:title" content="Dota $DTA">
-<meta property="og:description" content="1B supply. Zero owner. Claim it, vault it, burn it. Launching soon on Base.">
+<title>Dota $DTA | The community is the place to be</title>
+<meta name="description" content="Dota ($DTA): 1B fixed supply, no owner, built on Base. Dota community is the place to be.">
+<meta property="og:title" content="Dota $DTA | Dota community is the place to be">
+<meta property="og:description" content="1B supply. Zero owner. Built on Base for the long term.">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
+:root{
+  --bg:#070A12; --panel:#0D1322; --line:#1F2A44; --text:#EAEFFA; --muted:#A9B5CE;
+  --blue:#4F7FFF; --blue-hi:#8FB0FF; --ice:#A9C3FF; --amber:#FFB347; --chrome:#F2F5FC; --slate:#6B7691;
+}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#0A0E17}
-a{color:#8FB0FF}a:hover{color:#C4D5FF}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:var(--blue-hi)} a:hover{color:#C4D5FF}
+img{max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.display{font-family:Sora,system-ui,sans-serif;letter-spacing:-0.025em}
+.marker{font-family:"Permanent Marker",cursive}
+/* backdrop: blue grid + glow */
+.bg{position:relative;isolation:isolate}
+.bg::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(700px 420px at 78% 12%,rgba(79,127,255,.28),transparent 70%),
+    radial-gradient(500px 320px at 8% 30%,rgba(79,127,255,.14),transparent 70%),
+    linear-gradient(rgba(79,127,255,.07) 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg,rgba(79,127,255,.07) 1px,transparent 1px) 0 0/48px 48px;
+  mask-image:linear-gradient(#000 60%,transparent)}
+/* nav */
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding-top:22px}
+.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font:800 22px Sora,sans-serif;letter-spacing:-.01em}
+.brand img{width:48px;height:48px;border-radius:50%;display:block}
+.brand b{color:var(--blue-hi)}
+.links{display:flex;flex-wrap:wrap;gap:4px 24px;flex:1}
+.links a{color:var(--muted);text-decoration:none;padding:10px 0}
+.links a:hover{color:var(--text)}
+.thumb{width:132px;height:99px;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:12px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn.primary{background:var(--blue);color:#fff;box-shadow:0 0 0 1px rgba(143,176,255,.35),0 10px 40px -8px rgba(79,127,255,.7)}
+.btn.primary:hover{background:#6a93ff;color:#fff}
+.btn.ghost{border-color:#34425F;color:var(--text)}
+.btn.ghost:hover{border-color:var(--blue-hi);color:#fff}
+.btn svg{width:18px;height:18px;fill:currentColor}
+/* ticker */
+.ticker{margin-top:28px;border-block:1px solid var(--line);background:#0A0F1B;overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-flex;gap:48px;padding:12px 0;animation:slide 32s linear infinite;color:var(--ice);font:600 14px Sora,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.ticker span::after{content:"◆";margin-left:48px;color:var(--amber)}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}html{scroll-behavior:auto}.coin{animation:none!important}}
+/* hero */
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:40px 56px;padding:72px 0 64px}
+.hero .copy{flex:1 1 520px;min-width:0}
+.kicker{font:600 14px Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-hi)}
+h1{margin:18px 0 0;font:800 clamp(42px,7.4vw,88px)/1.02 Sora,sans-serif;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--blue-hi);text-shadow:0 0 40px rgba(79,127,255,.6)}
+.lead{margin:24px 0 0;max-width:560px;font-size:20px;color:#B7C2DA}
+.cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px}
+.coinbox{flex:0 1 400px;display:flex;justify-content:center}
+.coin{width:100%;max-width:400px;height:auto;border-radius:50%;display:block;filter:drop-shadow(0 0 48px rgba(79,127,255,.55));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+/* stats */
+.stats{display:flex;flex-wrap:wrap;gap:16px}
+.stat{flex:1 1 220px;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}
+.stat .n{font:700 34px Sora,sans-serif}
+.stat .l{color:var(--muted);margin-top:2px}
+/* sections */
+section{padding-top:112px}
+h2{margin:0;font:800 clamp(32px,5vw,52px)/1.08 Sora,sans-serif;letter-spacing:-.025em}
+.sub{margin:12px 0 0;color:var(--muted);max-width:640px}
+/* lore */
+.lore{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center;margin-top:40px}
+.lore .txt{flex:1 1 420px}
+.lore .txt p{margin:0 0 18px;font-size:19px;color:#C5CFE5}
+.lore .txt p.hit{font-size:26px;line-height:1.3;color:var(--text)}
+.lore .pic{flex:1 1 420px;position:relative}
+.lore .pic img{width:100%;height:auto;display:block;border-radius:20px;border:1px solid #2A3A63;box-shadow:0 30px 80px -30px rgba(79,127,255,.55)}
+.sticker{position:absolute;left:-10px;top:-16px;transform:rotate(-6deg);background:var(--amber);color:#1B1200;padding:6px 16px;border-radius:8px;font-size:20px}
+.tag{margin-top:8px;font-size:34px;color:var(--ice);transform:rotate(-2deg);display:inline-block}
+/* tokenomics */
+.card{margin-top:40px;border:1px solid var(--line);border-radius:24px;padding:32px;background:linear-gradient(180deg,#0E1526,#0A1020);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center}
+.donut{flex:0 1 360px;position:relative;margin:0 auto}
+.donut svg{width:100%;height:auto;display:block;transform:rotate(0deg)}
+.donut .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.donut .mid b{font:800 34px Sora,sans-serif}
+.donut .mid span{color:var(--muted);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+.legend{flex:1 1 380px;min-width:0}
+.row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.row:last-of-type{border-bottom:0}
+.dot{width:16px;height:16px;border-radius:5px;flex:none}
+.row .name{flex:1;font-weight:600}
+.row .amt{color:var(--muted);font-variant-numeric:tabular-nums}
+.row .pct{font:700 20px Sora,sans-serif;width:64px;text-align:right}
+.note{margin:14px 0 0;color:var(--muted);font-size:15px}
+/* modules */
+.grid{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px}
+.mod{flex:1 1 260px;border:1px solid var(--line);border-radius:20px;padding:26px;background:var(--panel)}
+.mod .no{font:700 14px Sora,sans-serif;color:var(--blue-hi)}
+.mod h3{margin:6px 0 0;font:700 22px Sora,sans-serif}
+.mod p{margin:10px 0 0;color:#B7C2DA;font-size:16px}
+.chips{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid #2A3A63;border-radius:999px;padding:8px 16px;color:#C9D6F5;font-size:15px;background:#0B1220}
+/* why */
+.why{margin-top:0;border:1px solid #2A3A63;border-radius:28px;padding:clamp(28px,5vw,64px);background:radial-gradient(600px 300px at 85% 0,rgba(79,127,255,.25),transparent 70%),#0C1324}
+.why q{display:block;margin-top:18px;font:800 clamp(28px,4.6vw,52px)/1.12 Sora,sans-serif;letter-spacing:-.025em;quotes:none}
+.why q em{font-style:normal;color:var(--blue-hi)}
+.why .pills{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+/* path */
+.path{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.step{flex:1 1 190px;border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--panel)}
+.step i{display:block;font:700 13px Sora,sans-serif;color:var(--blue-hi);font-style:normal}
+.step b{display:block;margin-top:2px}
+/* final */
+.final{text-align:center;padding:120px 0 40px}
+.final h2{font-size:clamp(34px,6vw,68px)}
+.final .cta{justify-content:center}
+footer{margin-top:64px;border-top:1px solid var(--line);padding:28px 0 56px;color:#8E9AB5;font-size:14px}
+footer p{margin:0;max-width:820px}
+@media (max-width:640px){.thumb{display:none}.card{padding:22px}}
 </style>
 </head>
 <body>
-<div id="top" style="width:100%;min-height:100vh;box-sizing:border-box;background:#0A0E17;color:#EAEFFA;font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.55;overflow-x:hidden">
-
-  <!-- NAV -->
-  <div style="max-width:1200px;margin:0 auto;padding:24px 24px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px">
-    <a href="#top" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#EAEFFA;font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.01em"><img src="/img/logo-128.png" alt="" width="48" height="48" style="width:48px;height:48px;border-radius:50%;display:block"><span>Dota <span style="color:#6C97FF">$DTA</span></span></a>
-    <div style="flex-grow:1;display:flex;flex-wrap:wrap;gap:8px 28px">
-      <a href="#modules" style="color:#A9B5CE;text-decoration:none;padding:10px 0">What it does</a>
-      <a href="#tokenomics" style="color:#A9B5CE;text-decoration:none;padding:10px 0">Tokenomics</a>
-      <a href="#trust" style="color:#A9B5CE;text-decoration:none;padding:10px 0">Built to be trusted</a>
-      <a href="#path" style="color:#A9B5CE;text-decoration:none;padding:10px 0">Launch path</a>
-    </div>
-    <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid #2A3550;border-radius:999px;padding:8px 14px;font-size:14px;color:#C9D3EA">
-      <span style="width:8px;height:8px;border-radius:50%;background:#FFB347;display:inline-block"></span>
-      Launching soon on Base
-    </div>
-    <img src="/img/community-header.webp" alt="The Dota community: two apes in yellow suits lounging in a neon-blue lab beside the DTA coin" width="132" height="99" style="width:132px;height:99px;object-fit:cover;border-radius:12px;border:1px solid #2A3550;display:block">
+<div id="top" class="bg">
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="#top"><img src="/img/logo-128.png" alt="" width="48" height="48"><span>Dota <b>$DTA</b></span></a>
+      <nav class="links" aria-label="Sections">
+        <a href="#lore">Lore</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#why">Why we built this</a>
+        <a href="#path">Launch path</a>
+      </nav>
+      <a class="btn ghost" href="https://x.com/dota_isbased?s=11" target="_blank" rel="noopener noreferrer">Follow on X</a>
+      <img class="thumb" src="/img/community-header.webp" alt="The Dota community: two apes in yellow suits lounging in a neon-blue lab beside the DTA coin" width="132" height="99">
+    </header>
   </div>
 
-  <!-- HERO -->
-  <div style="max-width:1200px;margin:0 auto;padding:72px 24px 72px;display:flex;flex-wrap:wrap;align-items:center;gap:48px">
-    <div style="flex:1 1 520px;min-width:0">
-    <div style="font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#6C97FF;font-weight:600">Fixed supply · Fully on-chain · Built on Base</div>
-    <h1 style="margin:20px 0 0;font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:clamp(44px,8vw,96px);line-height:1.02;letter-spacing:-0.03em;max-width:980px">
-      One billion tokens.<br><span style="color:#6C97FF">Zero owner.</span>
-    </h1>
-    <p style="margin:28px 0 0;max-width:640px;font-size:20px;color:#B7C2DA">
-      Dota is a community-first token with no mint, no pause and no tax. 40% is set aside for the community to claim, rewards are paid out on-chain, and buybacks burn supply for good.
-    </p>
-    <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px">
-      <a href="#modules" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:12px;background:#4F7FFF;color:#FFFFFF;font-weight:600;text-decoration:none">See how it works</a>
-      <a href="#tokenomics" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:12px;border:1px solid #34425F;color:#EAEFFA;font-weight:600;text-decoration:none">View the numbers</a>
-    </div>
-    </div>
-    <div style="flex:0 1 380px;display:flex;justify-content:center">
-      <img src="/img/dta-coin.webp" alt="The DTA coin: a silver DTA monogram inside a glowing blue circuit-board ring" width="380" height="380" style="width:100%;max-width:380px;height:auto;display:block;border-radius:50%">
+  <div class="ticker" aria-hidden="true">
+    <div class="track">
+      <span>Community first</span><span>1B fixed supply</span><span>Zero owner</span><span>Built on Base</span><span>Alpha lab open</span><span>Built for the long term</span>
+      <span>Community first</span><span>1B fixed supply</span><span>Zero owner</span><span>Built on Base</span><span>Alpha lab open</span><span>Built for the long term</span>
     </div>
   </div>
 
-  <!-- STATS -->
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px">
-    <div style="display:flex;flex-wrap:wrap;gap:16px">
-      <div style="flex:1 1 240px;border:1px solid #232D45;border-radius:16px;padding:24px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;font-size:36px">1,000,000,000</div>
-        <div style="color:#A9B5CE;margin-top:4px">$DTA total supply, minted once</div>
+  <div class="wrap">
+    <div class="hero">
+      <div class="copy">
+        <div class="kicker">The alpha community on Base</div>
+        <h1>Dota community is <em>the place to be.</em></h1>
+        <p class="lead">One billion tokens, minted once, with nobody holding the keys. Come for the alpha, stay for the people building it with you.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://x.com/dota_isbased?s=11" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Join the community on X
+          </a>
+          <a class="btn ghost" href="#lore">Read the lore</a>
+        </div>
       </div>
-      <div style="flex:1 1 240px;border:1px solid #232D45;border-radius:16px;padding:24px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;font-size:36px">40%</div>
-        <div style="color:#A9B5CE;margin-top:4px">reserved for the community claim</div>
-      </div>
-      <div style="flex:1 1 240px;border:1px solid #232D45;border-radius:16px;padding:24px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;font-size:36px">0</div>
-        <div style="color:#A9B5CE;margin-top:4px">mint, pause or blacklist functions</div>
-      </div>
-      <div style="flex:1 1 240px;border:1px solid #232D45;border-radius:16px;padding:24px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;font-size:36px">2%</div>
-        <div style="color:#A9B5CE;margin-top:4px">of the reward pool released each epoch</div>
+      <div class="coinbox">
+        <img class="coin" src="/img/dta-coin.webp" alt="The DTA coin: a silver DTA monogram inside a glowing blue circuit-board ring" width="400" height="400">
       </div>
     </div>
-  </div>
 
-  <!-- MODULES -->
-  <div id="modules" style="max-width:1200px;margin:0 auto;padding:120px 24px 0">
-    <h2 style="margin:0;font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:clamp(32px,5vw,52px);letter-spacing:-0.02em">Four moving parts. All on-chain.</h2>
-    <p style="margin:12px 0 0;color:#A9B5CE;max-width:620px">Each module is its own contract with a single job, so you can read exactly what it does.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1,000,000,000</div><div class="l">$DTA total supply, minted once</div></div>
+      <div class="stat"><div class="n">40%</div><div class="l">reserved for the community claim</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">mint, pause or blacklist functions</div></div>
+      <div class="stat"><div class="n">Base</div><div class="l">fast, cheap, and where the crowd is</div></div>
+    </div>
 
-    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:16px">
-      <div style="flex:1 1 440px;border:1px solid #232D45;border-radius:20px;padding:32px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;color:#6C97FF;font-size:15px">01</div>
-        <h3 style="margin:8px 0 0;font-family:Sora,system-ui,sans-serif;font-size:26px">Community Claim</h3>
-        <p style="margin:12px 0 0;color:#B7C2DA">400M $DTA waiting for the community. Connect your wallet, we check your Merkle proof, you claim. One transaction. The list is locked the moment claims open.</p>
+    <!-- LORE -->
+    <section id="lore">
+      <div class="kicker">Lore</div>
+      <h2 style="margin-top:10px">Welcome to the lab.</h2>
+      <div class="lore">
+        <div class="txt">
+          <p>Every cycle, same story. A token launches, somebody holds the keys, and the lights go out.</p>
+          <p>So a few apes on Base walked into the back room, turned the lights blue, and cooked up something different.</p>
+          <p class="hit">One billion tokens. Minted once. No owner, no mint button, no off switch.</p>
+          <p>Just a community that shows up every day.</p>
+          <div class="tag marker">Grab a chair.</div>
+        </div>
+        <div class="pic">
+          <img src="/img/community.webp" alt="Two apes in yellow suits relaxing in a neon-blue lab, surrounded by DTA coins, with the DTA coin glowing behind them" width="960" height="720" loading="lazy">
+          <div class="sticker marker">Est. on Base</div>
+        </div>
       </div>
-      <div style="flex:1 1 440px;border:1px solid #232D45;border-radius:20px;padding:32px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;color:#6C97FF;font-size:15px">02</div>
-        <h3 style="margin:8px 0 0;font-family:Sora,system-ui,sans-serif;font-size:26px">Holder Rewards</h3>
-        <p style="margin:12px 0 0;color:#B7C2DA">A 110M pool paid out in epochs, 2% of what is left each time. It is a finite program, not perpetual yield, and every epoch is published for anyone to verify.</p>
+    </section>
+
+    <!-- TOKENOMICS -->
+    <section id="tokenomics">
+      <div class="kicker">Tokenomics</div>
+      <h2 style="margin-top:10px">Where every token goes.</h2>
+      <p class="sub">All 1,000,000,000 $DTA are minted once at deployment and split like this. There is no way to create more.</p>
+      <div class="card">
+        <div class="donut">
+          <svg viewBox="0 0 42 42" role="img" aria-label="Allocation donut chart: community claim 40 percent, liquidity 30 percent, buyback reserve 15 percent, holder rewards 11 percent, treasury 4 percent">
+            <circle cx="21" cy="21" r="15.9155" fill="none" stroke="#111A2E" stroke-width="6"/>
+            <circle cx="21" cy="21" r="15.9155" fill="none" stroke="#4F7FFF" stroke-width="6" stroke-dasharray="39.4 60.6" stroke-dashoffset="25"/>
+            <circle cx="21" cy="21" r="15.9155" fill="none" stroke="#A9C3FF" stroke-width="6" stroke-dasharray="29.4 70.6" stroke-dashoffset="-15"/>
+            <circle cx="21" cy="21" r="15.9155" fill="none" stroke="#FFB347" stroke-width="6" stroke-dasharray="14.4 85.6" stroke-dashoffset="-45"/>
+            <circle cx="21" cy="21" r="15.9155" fill="none" stroke="#F2F5FC" stroke-width="6" stroke-dasharray="10.4 89.6" stroke-dashoffset="-60"/>
+            <circle cx="21" cy="21" r="15.9155" fill="none" stroke="#6B7691" stroke-width="6" stroke-dasharray="3.4 96.6" stroke-dashoffset="-71"/>
+          </svg>
+          <div class="mid"><b>1B</b><span>$DTA</span></div>
+        </div>
+        <div class="legend">
+          <div class="row"><span class="dot" style="background:#4F7FFF"></span><span class="name">Community claim</span><span class="amt">400,000,000</span><span class="pct">40%</span></div>
+          <div class="row"><span class="dot" style="background:#A9C3FF"></span><span class="name">Liquidity</span><span class="amt">300,000,000</span><span class="pct">30%</span></div>
+          <div class="row"><span class="dot" style="background:#FFB347"></span><span class="name">Buyback reserve</span><span class="amt">150,000,000</span><span class="pct">15%</span></div>
+          <div class="row"><span class="dot" style="background:#F2F5FC"></span><span class="name">Holder rewards</span><span class="amt">110,000,000</span><span class="pct">11%</span></div>
+          <div class="row"><span class="dot" style="background:#6B7691"></span><span class="name">Treasury</span><span class="amt">40,000,000</span><span class="pct">4%</span></div>
+          <p class="note">Holder rewards are a finite pool: 2% of what is left is released each epoch. It is not perpetual yield and nothing is guaranteed.</p>
+        </div>
       </div>
-      <div style="flex:1 1 440px;border:1px solid #232D45;border-radius:20px;padding:32px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;color:#6C97FF;font-size:15px">03</div>
-        <h3 style="margin:8px 0 0;font-family:Sora,system-ui,sans-serif;font-size:26px">LP Vault</h3>
-        <p style="margin:12px 0 0;color:#B7C2DA">Back the pool. Deposit $DTA/ETH LP tokens, get dLP shares for your slice of the vault, and withdraw whenever you like. No owner can touch what is inside.</p>
+
+      <div class="grid">
+        <div class="mod"><div class="no">01</div><h3>Community Claim</h3><p>400M $DTA claimed with a Merkle proof. The list locks the moment claims open.</p></div>
+        <div class="mod"><div class="no">02</div><h3>Holder Rewards</h3><p>A finite 110M pool, released in public epochs anyone can verify.</p></div>
+        <div class="mod"><div class="no">03</div><h3>LP Vault</h3><p>Deposit $DTA/ETH LP, get dLP shares, withdraw any time. No admin keys.</p></div>
+        <div class="mod"><div class="no" style="color:var(--amber)">04</div><h3>Buyback &amp; Burn</h3><p>ETH buys $DTA on a Base DEX and it goes straight to the burn address.</p></div>
       </div>
-      <div style="flex:1 1 440px;border:1px solid #232D45;border-radius:20px;padding:32px;background:#0F1524">
-        <div style="font-family:Sora,system-ui,sans-serif;font-weight:700;color:#FFB347;font-size:15px">04</div>
-        <h3 style="margin:8px 0 0;font-family:Sora,system-ui,sans-serif;font-size:26px">Buyback &amp; Burn</h3>
-        <p style="margin:12px 0 0;color:#B7C2DA">ETH goes in, $DTA is bought on a Base DEX and sent straight to the burn address. Less supply, in public, with every transaction on the dashboard.</p>
+      <div class="chips">
+        <span class="chip">Fixed supply</span><span class="chip">Multisig-owned</span><span class="chip">Locked claim list</span><span class="chip">Capped rewards</span><span class="chip">Hardened vault</span><span class="chip">Guarded buybacks</span>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section id="why">
+      <div class="why">
+        <div class="kicker">Why we built this</div>
+        <q>Because our community <em>leads the way forward.</em> Built for the long term.</q>
+        <div class="pills">
+          <span class="chip">Community-led</span><span class="chip">Fixed supply</span><span class="chip">Long-term mindset</span><span class="chip">Open on-chain</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PATH -->
+    <section id="path">
+      <div class="kicker">Launch path</div>
+      <h2 style="margin-top:10px">The road to launch.</h2>
+      <div class="path">
+        <div class="step"><i>Step 1</i><b>Testnet rehearsal</b></div>
+        <div class="step"><i>Step 2</i><b>Independent audit</b></div>
+        <div class="step"><i>Step 3</i><b>Deploy &amp; verify</b></div>
+        <div class="step"><i>Step 4</i><b>Claim opens</b></div>
+        <div class="step"><i>Step 5</i><b>Vault, rewards, burns</b></div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <div class="final">
+      <h2>Dota community is <span style="color:var(--blue-hi)">the place to be.</span></h2>
+      <p class="sub" style="margin-inline:auto">Pull up a chair. The lights are blue and the lab is open.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://x.com/dota_isbased?s=11" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Join the community on X
+        </a>
       </div>
     </div>
-  </div>
 
-  <!-- TOKENOMICS -->
-  <div id="tokenomics" style="max-width:1200px;margin:0 auto;padding:120px 24px 0">
-    <h2 style="margin:0;font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:clamp(32px,5vw,52px);letter-spacing:-0.02em">Where every token goes.</h2>
-    <div style="margin-top:36px;display:flex;gap:4px;height:56px;border-radius:14px;overflow:hidden" role="img" aria-label="Allocation: community claim 40 percent, liquidity 30 percent, buyback reserve 15 percent, holder rewards 11 percent, treasury 4 percent">
-      <div style="flex:40 1 0;background:#4F7FFF"></div>
-      <div style="flex:30 1 0;background:#A9C3FF"></div>
-      <div style="flex:15 1 0;background:#FFB347"></div>
-      <div style="flex:11 1 0;background:#F2F5FC"></div>
-      <div style="flex:4 1 0;background:#6B7691"></div>
-    </div>
-    <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:16px">
-      <div style="flex:1 1 200px"><div style="display:flex;align-items:center;gap:10px"><span style="width:14px;height:14px;border-radius:4px;background:#4F7FFF;display:inline-block"></span><b>Community claim</b></div><div style="font-family:Sora,system-ui,sans-serif;font-size:28px;margin-top:6px">40%</div><div style="color:#A9B5CE">400,000,000</div></div>
-      <div style="flex:1 1 200px"><div style="display:flex;align-items:center;gap:10px"><span style="width:14px;height:14px;border-radius:4px;background:#A9C3FF;display:inline-block"></span><b>Liquidity</b></div><div style="font-family:Sora,system-ui,sans-serif;font-size:28px;margin-top:6px">30%</div><div style="color:#A9B5CE">300,000,000</div></div>
-      <div style="flex:1 1 200px"><div style="display:flex;align-items:center;gap:10px"><span style="width:14px;height:14px;border-radius:4px;background:#FFB347;display:inline-block"></span><b>Buyback reserve</b></div><div style="font-family:Sora,system-ui,sans-serif;font-size:28px;margin-top:6px">15%</div><div style="color:#A9B5CE">150,000,000</div></div>
-      <div style="flex:1 1 200px"><div style="display:flex;align-items:center;gap:10px"><span style="width:14px;height:14px;border-radius:4px;background:#F2F5FC;display:inline-block"></span><b>Holder rewards</b></div><div style="font-family:Sora,system-ui,sans-serif;font-size:28px;margin-top:6px">11%</div><div style="color:#A9B5CE">110,000,000</div></div>
-      <div style="flex:1 1 200px"><div style="display:flex;align-items:center;gap:10px"><span style="width:14px;height:14px;border-radius:4px;background:#6B7691;display:inline-block"></span><b>Treasury</b></div><div style="font-family:Sora,system-ui,sans-serif;font-size:28px;margin-top:6px">4%</div><div style="color:#A9B5CE">40,000,000</div></div>
-    </div>
+    <footer>
+      <p>Not financial, legal or investment advice. Crypto assets carry substantial risk, including total loss. Holder rewards are finite and not guaranteed. The contracts are a pre-audit reference build and will not launch until independently audited. Always check contract addresses against the official announcement before signing anything.</p>
+    </footer>
   </div>
-
-  <!-- TRUST -->
-  <div id="trust" style="max-width:1200px;margin:0 auto;padding:120px 24px 0">
-    <h2 style="margin:0;font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:clamp(32px,5vw,52px);letter-spacing:-0.02em">Built so you do not have to trust us.</h2>
-    <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:16px">
-      <div style="flex:1 1 340px;border-top:2px solid #4F7FFF;padding-top:16px"><b style="font-size:19px">Fixed supply</b><p style="margin:6px 0 0;color:#B7C2DA">Everything is minted once at deployment. Nobody, including the team, can print more.</p></div>
-      <div style="flex:1 1 340px;border-top:2px solid #4F7FFF;padding-top:16px"><b style="font-size:19px">Multisig from block one</b><p style="margin:6px 0 0;color:#B7C2DA">Privileged contracts are owned by a multisig from their first block. The deployer key keeps nothing.</p></div>
-      <div style="flex:1 1 340px;border-top:2px solid #4F7FFF;padding-top:16px"><b style="font-size:19px">Locked claim list</b><p style="margin:6px 0 0;color:#B7C2DA">The claim list freezes when claims open, and the deadline can only move later, never sooner.</p></div>
-      <div style="flex:1 1 340px;border-top:2px solid #4F7FFF;padding-top:16px"><b style="font-size:19px">Capped rewards</b><p style="margin:6px 0 0;color:#B7C2DA">Epochs have a minimum gap and a hard per-epoch cap, so the pool cannot be drained in a rush.</p></div>
-      <div style="flex:1 1 340px;border-top:2px solid #4F7FFF;padding-top:16px"><b style="font-size:19px">Hardened vault</b><p style="margin:6px 0 0;color:#B7C2DA">An ERC-4626 vault with inflation-attack protection and no admin keys.</p></div>
-      <div style="flex:1 1 340px;border-top:2px solid #4F7FFF;padding-top:16px"><b style="font-size:19px">Guarded buybacks</b><p style="margin:6px 0 0;color:#B7C2DA">Slippage limits, size caps and a cooldown on every buyback. Bought tokens can only be burned.</p></div>
-    </div>
-  </div>
-
-  <!-- PATH -->
-  <div id="path" style="max-width:1200px;margin:0 auto;padding:120px 24px 0">
-    <h2 style="margin:0;font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:clamp(32px,5vw,52px);letter-spacing:-0.02em">The road to launch.</h2>
-    <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:16px">
-      <div style="flex:1 1 200px;border:1px solid #232D45;border-radius:16px;padding:20px;background:#0F1524"><div style="color:#6C97FF;font-family:Sora,system-ui,sans-serif;font-weight:700">Step 1</div><b>Testnet rehearsal</b><div style="color:#A9B5CE;margin-top:4px;font-size:15px">Full dry run on Base Sepolia.</div></div>
-      <div style="flex:1 1 200px;border:1px solid #232D45;border-radius:16px;padding:20px;background:#0F1524"><div style="color:#6C97FF;font-family:Sora,system-ui,sans-serif;font-weight:700">Step 2</div><b>Independent audit</b><div style="color:#A9B5CE;margin-top:4px;font-size:15px">Findings fixed before mainnet.</div></div>
-      <div style="flex:1 1 200px;border:1px solid #232D45;border-radius:16px;padding:20px;background:#0F1524"><div style="color:#6C97FF;font-family:Sora,system-ui,sans-serif;font-weight:700">Step 3</div><b>Deploy &amp; verify</b><div style="color:#A9B5CE;margin-top:4px;font-size:15px">Contracts verified, addresses published.</div></div>
-      <div style="flex:1 1 200px;border:1px solid #232D45;border-radius:16px;padding:20px;background:#0F1524"><div style="color:#6C97FF;font-family:Sora,system-ui,sans-serif;font-weight:700">Step 4</div><b>Claim opens</b><div style="color:#A9B5CE;margin-top:4px;font-size:15px">Community list published first.</div></div>
-      <div style="flex:1 1 200px;border:1px solid #232D45;border-radius:16px;padding:20px;background:#0F1524"><div style="color:#FFB347;font-family:Sora,system-ui,sans-serif;font-weight:700">Step 5</div><b>Vault, rewards, burns</b><div style="color:#A9B5CE;margin-top:4px;font-size:15px">The flywheel starts turning.</div></div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div style="max-width:1200px;margin:120px auto 0;padding:32px 24px 64px;border-top:1px solid #232D45">
-    <p style="margin:0;color:#8E9AB5;font-size:14px;max-width:820px">
-      Not financial, legal or investment advice. Crypto assets carry substantial risk, including total loss. Holder rewards are finite and not guaranteed. The contracts are a pre-audit reference build and will not launch until independently audited. Always check contract addresses against the official announcement before signing anything.
-    </p>
-  </div>
-
 </div>
 </body>
 </html>
